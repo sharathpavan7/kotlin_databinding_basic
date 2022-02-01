@@ -25,13 +25,13 @@ class NotesViewModel: ViewModel(), Observable {
     }
 
     fun addNote() {
-        val title = inputTitle.value!!
-        val description = inputDescription.value!!
+        val title = inputTitle.value ?: ""
+        val description = inputDescription.value ?: ""
         if (title.isBlank() || description.isBlank()) {
             isDataEmpty.value = true
         } else {
-            inputTitle.value = " "
-            inputDescription.value = " "
+            inputTitle.value = ""
+            inputDescription.value = ""
             val note = Note(title, description)
             arrayLst.add(note)
             list.value = arrayLst
